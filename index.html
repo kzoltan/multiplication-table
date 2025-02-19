@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiplication Table Generator</h1>
+    <button onclick="generateTable()">Generate New Table</button>
+    <button onclick="window.print()">Print Table</button>
+    <table id="multiplicationTable"></table>
+    
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateTable() {
+            const table = document.getElementById("multiplicationTable");
+            table.innerHTML = "";
+            
+            for (let i = 0; i < 10; i++) { // 10 rows
+                let row = table.insertRow();
+                for (let j = 0; j < 5; j++) { // 5 columns
+                    let num1 = getRandomInt(1, 10);
+                    let num2 = getRandomInt(1, 10);
+                    let cell = row.insertCell();
+                    cell.textContent = `${num1} × ${num2} =`;
+                }
+            }
+        }
+
+        window.onload = generateTable; // Generate on page load
+    </script>
+</body>
+</html>
